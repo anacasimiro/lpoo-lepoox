@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">LePoox</string>
+
+    <string name="contentDescriptionBackground">Background</string>
+    <string name="contentDescriptionAddition">Addition</string>
+    <string name="contentDescriptionSubtraction">Subtraction</string>
+    <string name="contentDescriptionMultiplication">Multiplication</string>
+    <string name="contentDescriptionReset">Reset</string>
+    <string name="contentDescriptionDone">Done</string>
+
+</resources>

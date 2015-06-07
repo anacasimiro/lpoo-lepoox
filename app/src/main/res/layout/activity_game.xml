@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.xx3.lepoox.activity.GameActivity" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gameBackground"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/game"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/contentDescriptionBackground" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:id="@+id/expression"
+        android:layout_alignParentTop="true"
+        android:animateLayoutChanges="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/firstOperand"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="@dimen/game_operand_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:gravity="center_horizontal"
+            android:id="@+id/firstOperation"
+            android:textColor="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/secondOperand"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="@dimen/game_operand_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:gravity="center_horizontal"
+            android:id="@+id/secondOperation"
+            android:textColor="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/thirdOperand"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="@dimen/game_operand_width"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:gravity="center_horizontal"
+            android:id="@+id/thirdOperation"
+            android:textColor="@color/blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/fourthOperand"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:text="="
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/equals"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/game_operands_margin"
+            android:layout_marginRight="@dimen/game_operands_margin"
+            android:text="13"
+            android:textSize="@dimen/game_operand_text_size"
+            android:id="@+id/result"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guesses"
+        android:layout_below="@+id/expression"
+        android:layout_centerHorizontal="true"
+        android:animateLayoutChanges="true"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:layout_width="@dimen/game_guess_size"
+            android:layout_height="@dimen/game_guess_size"
+            android:layout_marginLeft="@dimen/game_guess_margin"
+            android:layout_marginRight="@dimen/game_guess_margin"
+            android:contentDescription="@string/contentDescriptionAddition"
+            android:id="@+id/addition"
+            android:src="@drawable/addition" />
+
+        <ImageView
+            android:layout_width="@dimen/game_guess_size"
+            android:layout_height="@dimen/game_guess_size"
+            android:layout_marginLeft="@dimen/game_guess_margin"
+            android:layout_marginRight="@dimen/game_guess_margin"
+            android:contentDescription="@string/contentDescriptionSubtraction"
+            android:id="@+id/subtraction"
+            android:src="@drawable/subtraction" />
+
+        <ImageView
+            android:layout_width="@dimen/game_guess_size"
+            android:layout_height="@dimen/game_guess_size"
+            android:layout_marginLeft="@dimen/game_guess_margin"
+            android:layout_marginRight="@dimen/game_guess_margin"
+            android:contentDescription="@string/contentDescriptionMultiplication"
+            android:id="@+id/multiplication"
+            android:src="@drawable/multiplication" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_actions"
+        android:layout_marginBottom="20dp"
+        android:animateLayoutChanges="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="@dimen/game_action_size"
+            android:layout_height="@dimen/game_action_size"
+            android:layout_marginLeft="@dimen/game_action_margin"
+            android:layout_marginRight="@dimen/game_action_margin"
+            android:contentDescription="@string/contentDescriptionReset"
+            android:id="@+id/game_action_reset"
+            android:src="@drawable/reset"/>
+
+        <ImageView
+            android:layout_width="@dimen/game_action_size"
+            android:layout_height="@dimen/game_action_size"
+            android:layout_marginLeft="@dimen/game_action_margin"
+            android:layout_marginRight="@dimen/game_action_margin"
+            android:contentDescription="@string/contentDescriptionDone"
+            android:id="@+id/game_action_done"
+            android:src="@drawable/done"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

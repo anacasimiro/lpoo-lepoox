@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">0dp</dimen>
+    <dimen name="activity_vertical_margin">0dp</dimen>
+
+    <dimen name="game_operands_margin">8dp</dimen>
+    <dimen name="game_operand_text_size">60sp</dimen>
+    <dimen name="game_operand_width">50dp</dimen>
+    <dimen name="game_guess_margin">20dp</dimen>
+    <dimen name="game_guess_size">80dp</dimen>
+    <dimen name="game_action_margin">40dp</dimen>
+    <dimen name="game_action_size">40dp</dimen>
+
+</resources>
