@@ -8,6 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import com.xx3.lepoox.Model.Problem;
 import com.xx3.lepoox.Model.Solution;
 import com.xx3.lepoox.R;
@@ -21,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
     private int opCount;
 
     static boolean singlePlayer;
+    static boolean host;
 
     private Match match;
     private Client client;
@@ -53,6 +56,21 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if ( !singlePlayer ) {
+
+            if (host) {
+                HostGameActivity.client.stop();
+                HostGameActivity.server.stop();
+            } else {
+                JoinGameActivity.client.stop();
+            }
+
+        }
+    }
+
     /**
      * Initialize game
      */
@@ -64,8 +82,23 @@ public class GameActivity extends AppCompatActivity {
             match = new Match();
             problem = match.getProblem();
         } else {
-            client = HostGameActivity.client;
-            problem = HostGameActivity.problem;
+
+            if ( host ) {
+                client = HostGameActivity.client;
+                problem = HostGameActivity.problem;
+            } else {
+                client = JoinGameActivity.client;
+                problem = JoinGameActivity.problem;
+            }
+
+            client.addListener(new Listener() {
+                @Override
+                public void disconnected(Connection connection) {
+                    super.disconnected(connection);
+                    GameActivity.this.finish();
+                }
+            });
+
         }
 
         myOperations = new ArrayList<>();

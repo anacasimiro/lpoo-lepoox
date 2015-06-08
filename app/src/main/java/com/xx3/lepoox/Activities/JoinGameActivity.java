@@ -1,5 +1,6 @@
 package com.xx3.lepoox.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,18 @@ public class JoinGameActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        client.stop();
+    }
+
+    /**
+     * Launch GameActivity
+     */
+    private void launchGameActivity() {
+
+        Intent launchGameActivity = new Intent(this, GameActivity.class);
+        startActivity(launchGameActivity);
+        GameActivity.singlePlayer = false;
+        GameActivity.host = false;
+
     }
 
     /**
@@ -81,8 +93,8 @@ public class JoinGameActivity extends AppCompatActivity {
 
                     Log.i("[CLIENT]", "Problem received!");
 
-                    //problem = ((Packet.problemPacket)object).problem;
-                    //launchGameActivity();
+                    problem = (Problem) object;
+                    launchGameActivity();
 
                 }
 

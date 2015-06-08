@@ -56,8 +56,6 @@ public class HostGameActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        client.stop();
-        server.stop();
     }
 
     /**
@@ -67,6 +65,8 @@ public class HostGameActivity extends AppCompatActivity {
 
         Intent launchGameActivity = new Intent(this, GameActivity.class);
         startActivity(launchGameActivity);
+        GameActivity.singlePlayer = false;
+        GameActivity.host = true;
 
     }
 
@@ -167,8 +167,8 @@ public class HostGameActivity extends AppCompatActivity {
 
                     Log.i("[CLIENT]", "Problem received!");
 
-                    //problem = ((Packet.problemPacket)object).problem;
-                    //launchGameActivity();
+                    problem = (Problem) object;
+                    launchGameActivity();
 
                 }
 
