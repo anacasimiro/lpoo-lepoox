@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xx3.lepoox" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".activity.SplashScreenActivity"
+            android:name=".Activities.SplashScreenActivity"
             android:screenOrientation="sensorLandscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,19 +20,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainMenuActivity"
+            android:name=".Activities.MainMenuActivity"
             android:screenOrientation="sensorLandscape" >
         </activity>
         <activity
-            android:name=".activity.GameActivity"
+            android:name=".Activities.GameActivity"
             android:screenOrientation="sensorLandscape" >
         </activity>
         <activity
-            android:name=".activity.GameModeActivity"
+            android:name=".Activities.GameModeActivity"
             android:screenOrientation="sensorLandscape" >
         </activity>
         <activity
-            android:name=".activity.TwoPlayerActivity"
+            android:name=".Activities.TwoPlayerActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name=".Activities.HostGameActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name=".Activities.JoinGameActivity"
             android:screenOrientation="sensorLandscape" >
         </activity>
     </application>

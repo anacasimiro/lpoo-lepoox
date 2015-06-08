@@ -1,4 +1,4 @@
-package com.xx3.lepoox.model;
+package com.xx3.lepoox.Model;
 
 /**
  * An Enum to represent the arithmetic operations

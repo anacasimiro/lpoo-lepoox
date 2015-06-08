@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:animateLayoutChanges="true"
-    tools:context="com.xx3.lepoox.activity.MainMenuActivity" >
+    tools:context="com.xx3.lepoox.Activities.MainMenuActivity" >
 
     <ImageView
         android:layout_width="wrap_content"

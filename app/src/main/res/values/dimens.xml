@@ -7,11 +7,16 @@
     <dimen name="menu_player_mode_margin">62dp</dimen>
 
     <dimen name="game_operands_margin">8dp</dimen>
-    <dimen name="game_operand_text_size">60sp</dimen>
     <dimen name="game_operand_width">50dp</dimen>
+    <dimen name="game_operand_text_size">60sp</dimen>
+
     <dimen name="game_guess_margin">20dp</dimen>
     <dimen name="game_guess_size">80dp</dimen>
+
     <dimen name="game_action_margin">40dp</dimen>
     <dimen name="game_action_size">40dp</dimen>
+
+    <dimen name="ip_address">70sp</dimen>
+    <dimen name="ip_address_done_size">60dp</dimen>
 
 </resources>

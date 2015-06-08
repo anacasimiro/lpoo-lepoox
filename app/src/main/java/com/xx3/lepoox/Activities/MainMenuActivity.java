@@ -1,4 +1,4 @@
-package com.xx3.lepoox.activity;
+package com.xx3.lepoox.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.xx3.lepoox.model;
+package com.xx3.lepoox.Model;
 
 import android.util.Pair;
 

@@ -1,17 +1,14 @@
-package com.xx3.lepoox.activity;
+package com.xx3.lepoox.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.xx3.lepoox.R;
 
-public class GameModeActivity extends ActionBarActivity {
+public class GameModeActivity extends AppCompatActivity {
 
     private ImageView onePlayerMode;
     private ImageView twoPlayerMode;
@@ -30,6 +27,7 @@ public class GameModeActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent showGame = new Intent(GameModeActivity.this, GameActivity.class);
                 startActivity(showGame);
+                GameActivity.singlePlayer = true;
             }
         });
 

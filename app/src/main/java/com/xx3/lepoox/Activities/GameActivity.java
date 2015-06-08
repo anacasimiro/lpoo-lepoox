@@ -1,4 +1,4 @@
-package com.xx3.lepoox.activity;
+package com.xx3.lepoox.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +7,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.esotericsoftware.kryonet.Client;
+import com.xx3.lepoox.Model.Problem;
+import com.xx3.lepoox.Model.Solution;
 import com.xx3.lepoox.R;
-import com.xx3.lepoox.model.Match;
-import com.xx3.lepoox.model.Operation;
+import com.xx3.lepoox.Model.Match;
+import com.xx3.lepoox.Model.Operation;
 
 import java.util.ArrayList;
 
@@ -17,7 +20,13 @@ public class GameActivity extends AppCompatActivity {
 
     private int opCount;
 
-    private Match matchObject;
+    static boolean singlePlayer;
+
+    private Match match;
+    private Client client;
+
+    private Problem problem;
+    private Solution solution;
 
     private ArrayList<Operation> myOperations;
 
@@ -37,23 +46,27 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         init();
 
-
     }
 
     /**
-     * Initialize variables
+     * Initialize game
      */
     private void init() {
 
         opCount = 0;
 
-        matchObject = new Match(60);
+        if ( singlePlayer ) {
+            match = new Match();
+            problem = match.getProblem();
+        } else {
+            client = HostGameActivity.client;
+            problem = HostGameActivity.problem;
+        }
 
         myOperations = new ArrayList<>();
 
@@ -71,11 +84,11 @@ public class GameActivity extends AppCompatActivity {
         reset           = (ImageView)findViewById(R.id.game_action_reset);
         done            = (ImageView)findViewById(R.id.game_action_done);
 
-        firstOperand.setText( Integer.toString( matchObject.getOperands().get(0) ) );
-        secondOperand.setText( Integer.toString( matchObject.getOperands().get(1) ) );
-        thirdOperand.setText( Integer.toString( matchObject.getOperands().get(2) ) );
-        fourthOperand.setText( Integer.toString( matchObject.getOperands().get(3) ) );
-        result.setText(Integer.toString(matchObject.getResult()));
+        firstOperand.setText( Integer.toString( problem.getOperands().get(0) ) );
+        secondOperand.setText( Integer.toString( problem.getOperands().get(1) ) );
+        thirdOperand.setText( Integer.toString( problem.getOperands().get(2) ) );
+        fourthOperand.setText( Integer.toString( problem.getOperands().get(3) ) );
+        result.setText(Integer.toString(problem.getResult()));
 
         firstOperation.setVisibility(View.INVISIBLE);
         secondOperation.setVisibility(View.INVISIBLE);
@@ -213,13 +226,23 @@ public class GameActivity extends AppCompatActivity {
 
                 if ( opCount == 3 ) {
 
-                    int myResult = matchObject.calculateResult(myOperations);
+                    solution = new Solution(myOperations);
 
-                    if (myResult == matchObject.getResult()) {
-                        Toast.makeText(GameActivity.this, "RIGHT! You won!", Toast.LENGTH_SHORT).show();
+                    if ( singlePlayer ) {
+
+                        if (match.validateSolution(solution)) {
+                            Toast.makeText(GameActivity.this, "RIGHT! You won!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(GameActivity.this, "WRONG! You lost!", Toast.LENGTH_SHORT).show();
+                        }
+
                     } else {
-                        Toast.makeText(GameActivity.this, "WRONG! You lost!", Toast.LENGTH_SHORT).show();
+
+
+
                     }
+
+
 
                 }
 
