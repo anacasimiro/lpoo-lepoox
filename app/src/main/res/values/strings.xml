@@ -15,5 +15,7 @@
     <string name="title_activity_two_player">TwoPlayerActivity</string>
     <string name="title_activity_host_game">HostGameActivity</string>
     <string name="title_activity_join_game">JoinGameActivity</string>
+    <string name="title_activity_won">WonActivity</string>
+    <string name="title_activity_lost">LostActivity</string>
 
 </resources>

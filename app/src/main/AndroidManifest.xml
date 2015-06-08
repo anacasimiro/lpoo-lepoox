@@ -43,6 +43,14 @@
             android:name=".Activities.JoinGameActivity"
             android:screenOrientation="sensorLandscape" >
         </activity>
+        <activity
+            android:name=".Activities.WonActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name=".Activities.LostActivity"
+            android:screenOrientation="sensorLandscape" >
+        </activity>
     </application>
 
 </manifest>

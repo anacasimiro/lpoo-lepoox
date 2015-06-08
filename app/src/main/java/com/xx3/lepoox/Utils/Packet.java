@@ -13,6 +13,13 @@ public class Packet {
 
         /**
          * Constructor
+         */
+        public gameResult() {
+
+        }
+
+        /**
+         * Constructor
          *
          * @param victory The gameResult
          */
@@ -28,6 +35,13 @@ public class Packet {
 
         /**
          * Constructor
+         */
+        public problemPacket() {
+
+        }
+
+        /**
+         * Constructor
          *
          * @param problem The problem
          */
@@ -40,6 +54,13 @@ public class Packet {
     public static class solutionPacket {
 
         public Solution solution;
+
+        /**
+         * Constructor
+         */
+        public solutionPacket() {
+
+        }
 
         /**
          * Constructor

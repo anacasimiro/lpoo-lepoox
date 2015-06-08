@@ -1,7 +1,9 @@
 package com.xx3.lepoox.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.xx3.lepoox.Model.Solution;
 import com.xx3.lepoox.R;
 import com.xx3.lepoox.Model.Match;
 import com.xx3.lepoox.Model.Operation;
+import com.xx3.lepoox.Utils.Packet;
 
 import java.util.ArrayList;
 
@@ -56,21 +59,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if ( !singlePlayer ) {
-
-            if (host) {
-                HostGameActivity.client.stop();
-                HostGameActivity.server.stop();
-            } else {
-                JoinGameActivity.client.stop();
-            }
-
-        }
-    }
-
     /**
      * Initialize game
      */
@@ -92,10 +80,33 @@ public class GameActivity extends AppCompatActivity {
             }
 
             client.addListener(new Listener() {
+
                 @Override
                 public void disconnected(Connection connection) {
                     super.disconnected(connection);
                     GameActivity.this.finish();
+                }
+
+                @Override
+                public void received(Connection connection, Object object) {
+                    super.received(connection, object);
+
+                    if ( object instanceof Packet.gameResult ) {
+
+                        if ( ((Packet.gameResult)object).victory ) {
+                            Intent showWonActivity = new Intent(GameActivity.this, WonActivity.class);
+                            startActivity(showWonActivity);
+                            finish();
+                        } else {
+                            Intent showLostActivity = new Intent(GameActivity.this, LostActivity.class);
+                            startActivity(showLostActivity);
+                            finish();
+                        }
+
+                        GameActivity.this.finish();
+
+                    }
+
                 }
             });
 
@@ -264,18 +275,18 @@ public class GameActivity extends AppCompatActivity {
                     if ( singlePlayer ) {
 
                         if (match.validateSolution(solution)) {
-                            Toast.makeText(GameActivity.this, "RIGHT! You won!", Toast.LENGTH_SHORT).show();
+                            Intent showWonActivity = new Intent(GameActivity.this, WonActivity.class);
+                            startActivity(showWonActivity);
+                            finish();
                         } else {
-                            Toast.makeText(GameActivity.this, "WRONG! You lost!", Toast.LENGTH_SHORT).show();
+                            Intent showLostActivity = new Intent(GameActivity.this, LostActivity.class);
+                            startActivity(showLostActivity);
+                            finish();
                         }
 
                     } else {
-
-
-
+                        client.sendTCP(solution);
                     }
-
-
 
                 }
 

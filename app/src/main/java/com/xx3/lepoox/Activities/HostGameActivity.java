@@ -14,6 +14,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.xx3.lepoox.Model.Match;
+import com.xx3.lepoox.Model.Operation;
 import com.xx3.lepoox.Model.Problem;
 import com.xx3.lepoox.Model.Solution;
 import com.xx3.lepoox.R;
@@ -83,6 +84,7 @@ public class HostGameActivity extends AppCompatActivity {
         server.getKryo().register(Problem.class);
         server.getKryo().register(Solution.class);
         server.getKryo().register(ArrayList.class);
+        server.getKryo().register(Operation.class);
 
         server.addListener(new Listener() {
 
@@ -94,6 +96,13 @@ public class HostGameActivity extends AppCompatActivity {
                     connection.close();
                 }
 
+            }
+
+            @Override
+            public void disconnected(Connection connection) {
+                super.disconnected(connection);
+                server.stop();
+                HostGameActivity.this.finish();
             }
 
             @Override
@@ -150,6 +159,7 @@ public class HostGameActivity extends AppCompatActivity {
         client.getKryo().register(Problem.class);
         client.getKryo().register(Solution.class);
         client.getKryo().register(ArrayList.class);
+        client.getKryo().register(Operation.class);
 
         client.addListener(new Listener() {
 
@@ -157,6 +167,12 @@ public class HostGameActivity extends AppCompatActivity {
             public void connected(Connection connection) {
                 super.connected(connection);
                 client.sendTCP(new Packet.newMatchRequest());
+            }
+
+            @Override
+            public void disconnected(Connection connection) {
+                super.disconnected(connection);
+                HostGameActivity.this.finish();
             }
 
             @Override

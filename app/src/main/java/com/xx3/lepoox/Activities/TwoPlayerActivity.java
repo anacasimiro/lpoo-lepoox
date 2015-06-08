@@ -1,15 +1,14 @@
 package com.xx3.lepoox.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.xx3.lepoox.R;
 
-public class TwoPlayerActivity extends ActionBarActivity {
+public class TwoPlayerActivity extends AppCompatActivity {
 
     private ImageView hostGame;
     private ImageView joinGame;

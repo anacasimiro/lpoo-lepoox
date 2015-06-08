@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.xx3.lepoox.Model.Operation;
 import com.xx3.lepoox.Model.Problem;
 import com.xx3.lepoox.Model.Solution;
 import com.xx3.lepoox.R;
@@ -76,6 +77,7 @@ public class JoinGameActivity extends AppCompatActivity {
         client.getKryo().register(Problem.class);
         client.getKryo().register(Solution.class);
         client.getKryo().register(ArrayList.class);
+        client.getKryo().register(Operation.class);
 
         client.addListener(new Listener() {
 
@@ -83,6 +85,12 @@ public class JoinGameActivity extends AppCompatActivity {
             public void connected(Connection connection) {
                 super.connected(connection);
                 client.sendTCP(new Packet.newMatchRequest());
+            }
+
+            @Override
+            public void disconnected(Connection connection) {
+                super.disconnected(connection);
+                JoinGameActivity.this.finish();
             }
 
             @Override
