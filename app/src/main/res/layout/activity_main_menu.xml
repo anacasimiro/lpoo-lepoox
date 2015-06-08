@@ -2,18 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:animateLayoutChanges="true"
     tools:context="com.xx3.lepoox.activity.MainMenuActivity" >
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mainMenuBackground"
+        android:id="@+id/mainMenuTapToPlay"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/main_menu"
+        android:src="@drawable/main_menu_1"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/contentDescriptionBackground"
-        android:onClick="startGame" />
+        android:onClick="showGameMode"
+        android:contentDescription="@string/contentDescriptionBackground" />
+
 
 </RelativeLayout>

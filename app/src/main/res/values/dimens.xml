@@ -3,6 +3,9 @@
     <dimen name="activity_horizontal_margin">0dp</dimen>
     <dimen name="activity_vertical_margin">0dp</dimen>
 
+    <dimen name="menu_player_mode_size">120dp</dimen>
+    <dimen name="menu_player_mode_margin">62dp</dimen>
+
     <dimen name="game_operands_margin">8dp</dimen>
     <dimen name="game_operand_text_size">60sp</dimen>
     <dimen name="game_operand_width">50dp</dimen>

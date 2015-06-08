@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.xx3.lepoox.activity.GameModeActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/game_mode_background"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/contentDescriptionBackground" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:layout_width="@dimen/menu_player_mode_size"
+            android:layout_height="@dimen/menu_player_mode_size"
+            android:layout_marginLeft="@dimen/menu_player_mode_margin"
+            android:layout_marginRight="@dimen/menu_player_mode_margin"
+            android:id="@+id/onePlayerMode"
+            android:src="@drawable/one" />
+
+        <ImageView
+            android:layout_width="@dimen/menu_player_mode_size"
+            android:layout_height="@dimen/menu_player_mode_size"
+            android:layout_marginLeft="@dimen/menu_player_mode_margin"
+            android:layout_marginRight="@dimen/menu_player_mode_margin"
+            android:id="@+id/twoPlayerMode"
+            android:src="@drawable/two" />
+
+    </LinearLayout>
+
+</RelativeLayout>
