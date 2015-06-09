@@ -59,6 +59,13 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        client.stop();
+        finish();
+    }
+
     /**
      * Initialize game
      */

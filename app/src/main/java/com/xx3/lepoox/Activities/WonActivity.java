@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.xx3.lepoox.Model.Problem;
 import com.xx3.lepoox.R;
 import com.xx3.lepoox.Utils.Packet;
 
@@ -46,27 +47,24 @@ public class WonActivity extends AppCompatActivity {
 
         }
 
-        ((ImageView) findViewById(R.id.won_backround)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.won_backround).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-            if (singlePlayer) {
+                if (singlePlayer) {
 
-                Intent showGameActivity = new Intent(WonActivity.this, GameActivity.class);
-                startActivity(showGameActivity);
-                GameActivity.singlePlayer = true;
-                finish();
+                    Intent showGameActivity = new Intent(WonActivity.this, GameActivity.class);
+                    startActivity(showGameActivity);
+                    GameActivity.singlePlayer = true;
+                    finish();
 
-            } else {
-
-                if (host) {
-                    client.sendTCP(new Packet.newMatchRequest());
                 } else {
-                    client.sendTCP(new Packet.newMatchRequest());
-                }
 
-            }
+                    client.sendTCP(new Packet.newMatchRequest());
+                    setContentView(R.layout.waiting_for_opponent);
+
+                }
 
             }
 
@@ -81,8 +79,14 @@ public class WonActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
+    @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
 
         if ( !singlePlayer ) {
 
@@ -94,6 +98,10 @@ public class WonActivity extends AppCompatActivity {
             }
 
         }
+
+        Intent showTwoPlayerActivity = new Intent(WonActivity.this, TwoPlayerActivity.class);
+        showTwoPlayerActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(showTwoPlayerActivity);
 
     }
 

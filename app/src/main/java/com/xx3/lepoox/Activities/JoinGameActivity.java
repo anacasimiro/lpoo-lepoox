@@ -90,6 +90,9 @@ public class JoinGameActivity extends AppCompatActivity {
             @Override
             public void disconnected(Connection connection) {
                 super.disconnected(connection);
+                Intent showTwoPlayerActivity = new Intent(JoinGameActivity.this, TwoPlayerActivity.class);
+                showTwoPlayerActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(showTwoPlayerActivity);
                 JoinGameActivity.this.finish();
             }
 

@@ -3,12 +3,14 @@ package com.xx3.lepoox.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.xx3.lepoox.Model.Problem;
 import com.xx3.lepoox.R;
 import com.xx3.lepoox.Utils.Packet;
 
@@ -46,29 +48,24 @@ public class LostActivity extends AppCompatActivity {
 
         }
 
-        ((ImageView) findViewById(R.id.lost_background)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.lost_background).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-            if (singlePlayer) {
+                if (singlePlayer) {
 
-                Intent showGameActivity = new Intent(LostActivity.this, GameActivity.class);
-                startActivity(showGameActivity);
-                GameActivity.singlePlayer = true;
-                finish();
-
-            } else {
-
-                if (host) {
-                    client.sendTCP(new Packet.newMatchRequest());
+                    Intent showGameActivity = new Intent(LostActivity.this, GameActivity.class);
+                    startActivity(showGameActivity);
+                    GameActivity.singlePlayer = true;
                     finish();
+
                 } else {
-                    client.sendTCP(new Packet.newMatchRequest());
-                    finish();
-                }
 
-            }
+                    client.sendTCP(new Packet.newMatchRequest());
+                    setContentView(R.layout.waiting_for_opponent);
+
+                }
 
             }
 
@@ -79,12 +76,19 @@ public class LostActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
+        LostActivity.this.finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("LostActivity", "Paused and finished");
+        LostActivity.this.finish();
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
 
         if ( !singlePlayer ) {
 
@@ -96,6 +100,10 @@ public class LostActivity extends AppCompatActivity {
             }
 
         }
+
+        Intent showTwoPlayerActivity = new Intent(LostActivity.this, TwoPlayerActivity.class);
+        showTwoPlayerActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(showTwoPlayerActivity);
 
     }
 

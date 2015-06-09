@@ -41,6 +41,4 @@ public class GameModeActivity extends AppCompatActivity {
 
     }
 
-
-
 }
